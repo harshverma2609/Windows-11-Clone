@@ -1,0 +1,175 @@
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: black;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#wallpaper{
+    height:100%;
+    width:100%;
+    object-fit: fill;
+}
+
+/* PARTITIONS IN TASKBAR */
+.taskbar{
+    background-color: rgb(245, 245, 245);
+    width: 100%;
+    height: 3rem;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+.left{
+    color: black;
+    width: 20%;
+    height: 3rem;
+    position: relative;
+    display: inline-flex;
+    align-items: left;
+}
+.center{
+    color: black;
+    width: 100%;
+    height: 3rem;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.right{
+    color: black;
+    width: 20%;
+    height: 3rem;
+    position: relative;
+    display: inline-flex;
+    align-items: right;
+}
+
+/* ICONS TO BE OF APPROPRIATE SIZE */
+.nav-item > img, button >img{
+    height: 30px;
+    width: 30px;
+}
+button {
+    border: 0px;
+}
+
+/* FOR DATE AND TIME */
+.dateTime{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+#date{
+    align-self:flex-end;
+}
+#time{
+    align-self: flex-end;
+}
+
+/* CALCULATOR */
+body{
+    display: grid;
+    place-items: center;
+}
+#calc{
+    display: none;
+    width: 400px;
+    height: 450px;
+    background-color: black;
+    position: absolute;
+    border: 2px solid white;
+    border-radius: 6px; 
+}
+#calc input[type='text'] {
+    width: 88%;
+    position: relative;
+    height: 80px;
+    top: 5px;
+    text-align: right;
+    padding: 3px 6px;
+    font-size: 40px;
+    border: 5px solid rgb(0, 0, 0);
+    display: flex;
+    margin: auto;
+    border-radius: 6px;
+    color: white;
+    background-color: black;
+}
+.btn input[type='button']{
+    width:90px;
+    padding: 2px;
+    margin: 2px 0px;
+    position: relative;
+    left: 13px;
+    top: 20px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.5s;
+    background-color: rgba(128, 128, 128, 0.5);
+    border-radius: 6px;
+    color: white;
+}
+.btn input[type='button']:hover{
+    background-color: rgb(42, 42, 42);
+    color: white;
+}
+
+#result{
+    background-color: rgb(66, 204, 250);
+    color: black;
+}
+
+/* Start Menu */
+#menu{
+    width: 460px;
+    border-radius: 4px;
+}
+.startmenu{
+    position: absolute;
+    bottom: -650px;
+    text-align: center;
+    width: 100%;
+    transition: all 0.6s ease-in;
+    z-index: 6;
+}
+
+/* Search Menu */
+#searchBox{
+    width: 545px;
+    border-radius: 4px;
+}
+.searchmenu{
+    position: absolute;
+    bottom: -650px;
+    text-align: center;
+    width: 100%;
+    transition: all 0.6s ease-in;
+    z-index: 6;
+}
+
+/* Widget Menu */
+#widgetBox{
+    height: 94.5vh;
+    border-radius: 4px;
+}
+.widgetmenu{
+    position: absolute;
+    left: -950px;
+    bottom: 50px;
+    width: 100%;
+    transition: all 0.6s ease-in;
+    z-index: 6;
+}
+
