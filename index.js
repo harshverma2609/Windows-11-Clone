@@ -6,8 +6,8 @@ function changeWallpaper(){
     
     $("#wallpaper").fadeOut(1000);
     setTimeout(() => {
-        $("#wallpaper").src=wallpaperURL;
-        // document.getElementById("wallpaper").src=wallpaperURL;
+        // $("#wallpaper").src=wallpaperURL;
+        document.getElementById("wallpaper").src=wallpaperURL;
     }, 1000);
     $("#wallpaper").fadeIn(1000);
 }
