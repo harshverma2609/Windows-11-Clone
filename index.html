@@ -10,14 +10,14 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
-  <body onload="startTimer()"</body>
+  <body onload="startTimer()">
 
     <img id="wallpaper" src="./Wallpapers/img1.jpg" alt="wallpaper" />
     
     <div class="taskbar">
 
       <div class="left">
-        <div><img src="./taskbarleft.png"/></div>   
+        <div class="nav-item"><button onclick="display('weather')"><img src="./Icons/weatherIcon.png"/></button></div>
       </div>
 
       <div class="center">
@@ -25,7 +25,7 @@
         <div class="nav-item"><img id="search" src="./Icons/searchButton.png" alt=""/></div>
         <div class="nav-item"><img id="widget" src="./Icons/widgetIcon.png" alt=""/></button></div>
         <div class="nav-item"><button onclick="location.href='https://www.google.com'"><img src="./Icons/edgeIcon.png" alt=""/></button></div>
-        <div class="nav-item"><button onclick="display('calc')"><img id="calculator" src="./Icons/calculatorIcon.png" alt=""/></button></div>
+        <div class="nav-item"><button onclick="display('calc')"><img src="./Icons/calculatorIcon.png" alt=""/></button></div>
         <div class="nav-item"><img src="./Icons/storeIcon.png" alt=""/></div>
         <div class="nav-item"><img src="./Icons/vsCodeIcon.png" alt=""/></div>
       </div>
@@ -40,12 +40,40 @@
 
     </div>
 
+    <!-- WEATHER APP -->
+    <div id="weather">
+      <div class="close">
+        <div id="heading">
+          <img id="thumbnail" src="./Icons/weatherIcon.png"/>
+          <p>Weather</p>
+        </div>
+        <button onclick="display('weather')">X</button>
+      </div>
+      <div id="searchBar">
+        <input id="searchText" type="text" placeholder="Enter a city"/>
+        <button id="searchButton" onclick="getWeather()"><img src="./Icons/searchButton.png"></button>
+      </div>
+      <div id="information">
+        <img id="weather-icon" alt="weather Icon">
+        <div id="temp-div"></div>
+        <div id="weather-info"></div>
+        <div id="hourly-forecast"></div>
+      </div>
+    </div>
+
     <!-- CALCULATOR -->
     <div id="calc">
+      <div class="close">
+        <div id="heading">
+          <img id="thumbnail" src="./Icons/calculatorIcon.png"/>
+          <p>Calculator</p>
+        </div>
+        <button onclick="display('calc')">X</button>
+      </div>
       <input type="text" id = 'res'>
       <div class="btn">
         <input type="button" value = 'C' onclick = "Clear()">
-        <input type="button" value = '%' onclick = "Solve('%')">
+        <input type="button" value = '%' onclick = "Solve('*0.01')">
         <input type="button" value = '←' onclick ="Back('←')">
         <input type="button" value = '/' onclick = "Solve('/')">
         <br>

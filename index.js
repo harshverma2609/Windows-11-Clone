@@ -14,6 +14,7 @@ function changeWallpaper(){
 function startTimer() {
     setInterval(changeWallpaper, 10000);
     setInterval(dateTime,1000);
+    getWeather();
 }
 
 // LIVE DATE TIME
@@ -28,10 +29,95 @@ function dateTime(){
     document.getElementById("date").innerHTML=date + "-" + month + "-" + year;
 }
 
+// WEATHER API
+function getWeather(){
+    const apiKey='e5921ea74bbd87461a31535fc5ad82cf';
+    const city=document.getElementById('searchText').value;
+
+    if(!city){
+        console.log('enter city name!');
+        return;
+    }
+    const currentWeatherUrl= `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+    const forecastUrl= `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`;
+
+    fetch(currentWeatherUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayWeather(data);
+        })
+        .catch(error => {
+            console.error('Error fetching current Weather data:', error);
+        });
+
+    fetch(forecastUrl)
+        .then(response => response.json())
+        .then(data => {
+            displayHourlyForecast(data.list);
+        })
+        .catch(error => {
+            console.error('Error fetching hourly forecast data:', error);
+        });
+}
+function displayWeather(data){
+    const tempDivInfo=document.getElementById('temp-div');
+    const weatherInfoDiv=document.getElementById('weather-info');
+    const weatherIcon=document.getElementById('weather-icon');
+    const hourlyForecastDiv=document.getElementById('hourly-forecast');
+    
+    weatherInfoDiv.innerHTML='';
+    hourlyForecastDiv.innerHTML='';
+    tempDivInfo.innerHTML='';
+
+    if(data.cod === '404'){
+        weatherInfoDiv.innerHTML=`<p>${data.message}</p>`
+    } else {
+        const cityName=data.name;
+        const temperature=Math.round(data.main.temp - 273.15);
+        const description=data.weather[0].description;
+        const iconCode=data.weather[0].icon;
+        const iconUrl=`https://openweathermap.org/img/wn/${iconCode}@4x.png`;
+
+        const temperatureHTML=`<p>${temperature}°C</p>`;
+        const weatherHTML = `
+            <p>${cityName}</p>
+            <p>${description}</p>
+        `;
+
+        tempDivInfo.innerHTML=temperatureHTML;
+        weatherInfoDiv.innerHTML=weatherHTML;
+        weatherIcon.src=iconUrl;
+        weatherIcon.alt=description;
+
+        document.getElementById('weather-icon').style.display='block';
+    }
+}
+function displayHourlyForecast(hourlyData){
+    const hourlyForecastDiv=document.getElementById('hourly-forecast');
+    const next24Hours=hourlyData.slice(0,8);
+
+    next24Hours.forEach(item => {
+        const dateTime=new Date(item.dt*1000);
+        const hour=dateTime.getHours();
+        const temperature=Math.round(item.main.temp - 273.15);
+        const iconCode=item.weather[0].icon;
+        const iconUrl=`https://openweathermap.org/img/wn/${iconCode}.png`;
+
+        const hourlyItemHTML=`
+            <div class="hourly-item">
+                <span> ${hour}:00 </span>
+                <img src="${iconUrl}" alt="hourly weather icon">
+                <span> ${temperature}°C </span>
+            </div>
+        `;
+        hourlyForecastDiv.innerHTML+=hourlyItemHTML;
+    });
+}
+
 // CALCULATOR
 function Solve(val) {
-    var v = document.getElementById('res');
-    v.value += val;
+    var input = document.getElementById('res');
+    input.value += val;
 }
 function Result() {
     var num1 = document.getElementById('res').value;
@@ -43,14 +129,22 @@ function Clear() {
     input.value = '';
 }
 function Back() {
-    var ev = document.getElementById('res');
-    ev.value = ev.value.slice(0,-1);
+    var input = document.getElementById('res');
+    input.value = input.value.slice(0,-1);
 }
 
 // TO HIDE SHOW FUNCTION
+document.getElementById('calc').style.display="none";
+document.getElementById('weather').style.display="none";
+
 function display(id){
     var x = document.getElementById(id);
     if (x.style.display === "none") {
+        startMenu.style.bottom = "-650px"
+        widgetMenu.style.left = "-950px"
+        searchMenu.style.bottom = "-650px"
+        // document.getElementById('calc').style.display="none";
+        // document.getElementById('weather').style.display="none";
         x.style.display = "block";
     } else {
         x.style.display = "none";
@@ -69,6 +163,8 @@ startButton.addEventListener("click",()=>{
     if(startMenu.style.bottom == "-650px"){
         widgetMenu.style.left = "-950px"
         searchMenu.style.bottom = "-650px"
+        document.getElementById('calc').style.display="none";
+        document.getElementById('weather').style.display="none";
         startMenu.style.bottom = "55px"
     }else{
         startMenu.style.bottom = "-650px"
@@ -79,6 +175,8 @@ searchButton.addEventListener("click",()=>{
     if(searchMenu.style.bottom == "-650px"){
         widgetMenu.style.left = "-950px"
         startMenu.style.bottom = "-650px"
+        document.getElementById('calc').style.display="none";
+        document.getElementById('weather').style.display="none";
         searchMenu.style.bottom = "55px"
     }else{
         searchMenu.style.bottom = "-650px"
@@ -89,6 +187,8 @@ widgetButton.addEventListener("click",()=>{
     if(widgetMenu.style.left == "-950px"){
         startMenu.style.bottom = "-650px"
         searchMenu.style.bottom = "-650px"
+        document.getElementById('calc').style.display="none";
+        document.getElementById('weather').style.display="none";
         widgetMenu.style.left = "0px"
     }else{
         widgetMenu.style.left = "-950px"
