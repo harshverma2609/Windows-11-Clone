@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Try Windows 11</title>
+
+    <link rel="icon" type="image/x-ico" href="./favicon.ico" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <body onload="startTimer()">
+
+    <img id="wallpaper" src="./Wallpapers/img1.jpg" alt="wallpaper" />
+    
+    <div class="taskbar">
+
+      <div class="left">
+        <div class="nav-item"><button onclick="display('weather')"><img src="./Icons/weatherIcon.png"/></button></div>
+      </div>
+
+      <div class="center">
+        <div class="nav-item"><img id="start" src="./Icons/startButton.png" alt=""/></div>
+        <div class="nav-item"><img id="search" src="./Icons/searchButton.png" alt=""/></div>
+        <div class="nav-item"><img id="widget" src="./Icons/widgetIcon.png" alt=""/></button></div>
+        <div class="nav-item"><button onclick="location.href='https://www.google.com'"><img src="./Icons/edgeIcon.png" alt=""/></button></div>
+        <div class="nav-item"><button onclick="display('calc')"><img src="./Icons/calculatorIcon.png" alt=""/></button></div>
+        <div class="nav-item"><img src="./Icons/storeIcon.png" alt=""/></div>
+        <div class="nav-item"><img src="./Icons/vsCodeIcon.png" alt=""/></div>
+      </div>
+
+      <div class="right">
+        <div><img src="./taskbarright.PNG"/></div>
+        <div class="dateTime">
+          <div id="time"></div>
+          <div id="date"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WEATHER APP -->
+    <div id="weather">
+      <div class="close">
+        <div id="heading">
+          <img id="thumbnail" src="./Icons/weatherIcon.png"/>
+          <p>Weather</p>
+        </div>
+        <button onclick="display('weather')">X</button>
+      </div>
+      <div id="searchBar">
+        <input id="searchText" type="text" placeholder="Enter a city"/>
+        <button id="searchButton" onclick="getWeather()"><img src="./Icons/searchButton.png"></button>
+      </div>
+      <div id="information">
+        <img id="weather-icon" alt="weather Icon">
+        <div id="temp-div"></div>
+        <div id="weather-info"></div>
+        <div id="hourly-forecast"></div>
+      </div>
+    </div>
+
+    <!-- CALCULATOR -->
+    <div id="calc">
+      <div class="close">
+        <div id="heading">
+          <img id="thumbnail" src="./Icons/calculatorIcon.png"/>
+          <p>Calculator</p>
+        </div>
+        <button onclick="display('calc')">X</button>
+      </div>
+      <input type="text" id = 'res'>
+      <div class="btn">
+        <input type="button" value = 'C' onclick = "Clear()">
+        <input type="button" value = '%' onclick = "Solve('*0.01')">
+        <input type="button" value = '←' onclick ="Back('←')">
+        <input type="button" value = '/' onclick = "Solve('/')">
+        <br>
+        <input type="button" value = '7' onclick = "Solve('7')">
+        <input type="button" value = '8' onclick = "Solve('8')">
+        <input type="button" value = '9' onclick = "Solve('9')">
+        <input type="button" value = 'x' onclick = "Solve('*')">
+        <br>
+        <input type="button" value = '4' onclick = "Solve('4')">
+        <input type="button" value = '5' onclick = "Solve('5')">
+        <input type="button" value = '6' onclick = "Solve('6')">
+        <input type="button" value = '-' onclick = "Solve('-')">
+        <br>
+        <input type="button" value = '1' onclick = "Solve('1')">
+        <input type="button" value = '2' onclick = "Solve('2')">
+        <input type="button" value = '3' onclick = "Solve('3')">
+        <input type="button" value = '+' onclick = "Solve('+')">
+        <br>
+        <input type="button" value = '00'onclick = "Solve('00')">
+        <input type="button" value = '0' onclick = "Solve('0')">
+        <input type="button" value = '.' onclick = "Solve('.')">
+        <input type="button" id="result" value = '=' onclick = "Result()">
+      </div>
+    </div>
+
+    <!-- START MENU -->
+    <div class="startmenu">
+      <img id="menu" src="./startmenu.PNG" alt="">
+    </div>
+    <!-- SEARCH MENU -->
+    <div class="searchmenu">
+        <img id="searchBox" src="./searchmenu.PNG" alt="">
+    </div>
+    <!-- WIDGET MENU -->
+    <div class="widgetmenu">
+        <img id="widgetBox" src="./widgetmenu.png" alt="">
+    </div>
+
+    <script src="index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </body>
+</html>
