@@ -73,6 +73,7 @@ button {
     flex-direction: column;
     justify-content: center;
     margin-right: 5px;
+    min-width: 72px;
 }
 
 #date{

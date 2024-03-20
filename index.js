@@ -6,7 +6,6 @@ function changeWallpaper(){
     
     $("#wallpaper").fadeOut(1000);
     setTimeout(() => {
-        // $("#wallpaper").src=wallpaperURL;
         document.getElementById("wallpaper").src=wallpaperURL;
     }, 1000);
     $("#wallpaper").fadeIn(1000);
@@ -21,7 +20,7 @@ function startTimer() {
 function dateTime(){
     let d=new Date();
     let date=String(d.getDate()).padStart(2, '0');;
-    let month=String(d.getMonth()).padStart(2, '0');
+    let month=String(d.getMonth()+1).padStart(2, '0');
     let year=d.getFullYear();
     let minute=String(d.getMinutes()).padStart(2, '0');
     let hour=String(d.getHours()).padStart(2, '0');
