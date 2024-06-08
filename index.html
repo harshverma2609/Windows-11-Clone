@@ -11,28 +11,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   </head>
   <body onload="startTimer()">
-
     <img id="wallpaper" src="./Wallpapers/img1.jpg" alt="wallpaper" />
     
     <div class="taskbar">
 
       <div class="left">
-        <div class="nav-item"><button onclick="display('weather')"><img src="./Icons/weatherIcon.png"/></button></div>
+        <div class="nav-item"><button onclick="display('weather')"><img src="./Icons/weatherIcon.png" alt="weatherAppIcon"/></button></div>
       </div>
 
       <div class="center">
-        <div class="nav-item"><img id="start" src="./Icons/startButton.png" alt=""/></div>
-        <div class="nav-item"><img id="search" src="./Icons/searchButton.png" alt=""/></div>
-        <div class="nav-item"><img id="widget" src="./Icons/widgetIcon.png" alt=""/></button></div>
-        <div class="nav-item"><button onclick="location.href='https://www.google.com'"><img src="./Icons/edgeIcon.png" alt=""/></button></div>
-        <div class="nav-item"><button onclick="display('calc')"><img src="./Icons/calculatorIcon.png" alt=""/></button></div>
-        <div class="nav-item"><img src="./Icons/storeIcon.png" alt=""/></div>
-        <div class="nav-item"><img src="./Icons/vsCodeIcon.png" alt=""/></div>
+        <div class="nav-item"><img id="start" src="./Icons/startButton.png" alt="startIcon"/></div>
+        <div class="nav-item"><img id="search" src="./Icons/searchButton.png" alt="SearchIcon"/></div>
+        <div class="nav-item"><img id="widget" src="./Icons/widgetIcon.png" alt="WidgetIcon"/></button></div>
+        <div class="nav-item"><button onclick="location.href='https://www.google.com'"><img src="./Icons/edgeIcon.png" alt="edgeBrowserIcon"/></button></div>
+        <div class="nav-item"><button onclick="display('calc')"><img src="./Icons/calculatorIcon.png" alt="calculatorIcon"/></button></div>
+        <div class="nav-item" onclick="alert('Unavailable try calculator, calendar or weather')"><img src="./Icons/storeIcon.png" alt="storeIcon"/></div>
+        <div class="nav-item" onclick="alert('Unavailable try calculator, calendar or weather')"><img src="./Icons/vsCodeIcon.png" alt="vsCodeIcon"/></div>
       </div>
 
       <div class="right">
-        <div><img src="./taskbarright.PNG"/></div>
-        <div class="dateTime">
+        <div><img src="./taskbarright.PNG" alt="rightTaskbar"/></div>
+        <div class="dateTime" onclick="display('calendar')">
           <div id="time"></div>
           <div id="date"></div>
         </div>
@@ -44,14 +43,14 @@
     <div id="weather">
       <div class="close">
         <div id="heading">
-          <img id="thumbnail" src="./Icons/weatherIcon.png"/>
+          <img id="thumbnail" src="./Icons/weatherIcon.png" alt="weatherIcon"/>
           <p>Weather</p>
         </div>
         <button onclick="display('weather')">X</button>
       </div>
       <div id="searchBar">
-        <input id="searchText" type="text" placeholder="Enter a city"/>
-        <button id="searchButton" onclick="getWeather()"><img src="./Icons/searchButton.png"></button>
+        <input id="searchText" type="text" placeholder="Enter a city" value="Delhi"/>
+        <button id="searchButton" onclick="getWeather()"><img src="./Icons/searchButton.png" alt="searchIcon"></button>
       </div>
       <div id="information">
         <img id="weather-icon" alt="weather Icon">
@@ -65,7 +64,7 @@
     <div id="calc">
       <div class="close">
         <div id="heading">
-          <img id="thumbnail" src="./Icons/calculatorIcon.png"/>
+          <img id="thumbnail" src="./Icons/calculatorIcon.png" alt="calculatorIcon"/>
           <p>Calculator</p>
         </div>
         <button onclick="display('calc')">X</button>
@@ -99,17 +98,40 @@
       </div>
     </div>
 
+    <!-- CALENDAR -->
+    <div id="calendar">
+      <header>
+        <h3></h3>
+        <nav>
+          <button id="prev"></button>
+          <button id="next"></button>
+        </nav>
+      </header>
+      <section>
+        <ul class="days">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+        </ul>
+        <ul class="dates"></ul>
+      </section>
+    </div>
+
     <!-- START MENU -->
     <div class="startmenu">
-      <img id="menu" src="./startmenu.PNG" alt="">
+      <img id="menu" src="./startmenu.PNG" alt="startMenu">
     </div>
     <!-- SEARCH MENU -->
     <div class="searchmenu">
-        <img id="searchBox" src="./searchmenu.PNG" alt="">
+        <img id="searchBox" src="./searchmenu.PNG" alt="searchMenu">
     </div>
     <!-- WIDGET MENU -->
     <div class="widgetmenu">
-        <img id="widgetBox" src="./widgetmenu.png" alt="">
+        <img id="widgetBox" src="./widgetmenu.png" alt="widgetMenu">
     </div>
 
     <script src="index.js"></script>
